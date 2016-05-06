@@ -1,30 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
     <title>Flickr Angular API</title>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700|Candal' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://code.angularjs.org/1.5.5/angular.min.js" type="text/javascript"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
-<body>
+<body ng-controller="myCtrl">
     <header>
-        <h1>Flickr Searcher</h1>
+        <h1><span class="span-header">Flickr</span> Searcher</h1>
     </header>
+    <!-- search bar -->
     <section class="input-section">
         <form ng-submit="search()">
-            <input ng-model="searchTerm" placeholder="Enter a search term" required>
+            <!--When a user clicks submit, the text field in the form is cleared and text appears that indicates Flickr is being queried.-->
+            <input class="input-box" ng-model="searchTerm" placeholder="Enter a search term" ng-hide="isSearching" required>
             <button type="submit" ng-click="show=true">Search</button>
         </form>
     </section>
+    <!-- generated content -->
+    <section class="results-section">
+        <div ng-if="show && isSearching">
+            <h3>Searching for photos of <span class="highlight">"{{searchTerm}}"</span>...</h3>
+        </div>
+        <div ng-if="show && resultsFound">
+            <h3>We found {{numImages}} photos of <span class="highlight">"{{searchTerm}}"</span>.</h3>
+        </div>
+        <div ng-if="show && noResults">
+            <h3>Sorry, we couldn't find any photos of <span class="highlight">{{searchTerm}}</span>. Try searching for something else.</h3>
+        </div>
+        <ul class="imageList">
+            <li ng-repeat="result in results.photos.photo">
+                <div class="caption">
+                    <p>{{result.title}}</p>
+                </div>
+                <img ng-src="https://farm{{result.farm}}.staticflickr.com/{{result.server}}/{{result.id}}_{{result.secret}}.jpg">
+            </li>
+        </ul>
+    </section>
 
-
-
-    <script src="https://code.angularjs.org/1.5.5/angular.min.js" type="text/javascript"></script>
-    <script src='https://code.angularjs.org/1.5.5/angular-messages.min.js' type="text/javascript"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.js"></script>
-    <script src="js/script.js"></script>
 </body>
 
 </html>

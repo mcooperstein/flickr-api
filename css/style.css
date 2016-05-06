@@ -1,6 +1,47 @@
+/* -------------------------------------
+CSS reset
+(all the browsers will see the website in the same by setting every tag to 0 (the website will look the same on all browsers))
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+}
+
+
+/* -------------------------------------
+General styles (General Module, wrapping around the modules bellow)
+(the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules bellow (h2, h3, h4, h5, h6, p, a, ul, li))
+*/
+
 body {
     background-color: turquoise;
+    text-align: center;
 }
+
+.highlight {
+    font-family: 'Candal';
+    color: darkslategray;
+}
+
+
+/* -------------------------------------
+Header styles (Main Module)
+(all the styles inside the < header > or < nav > tags)
+*/
 
 h1 {
     font-family: 'Montserrat', 'Candal', sans-serif;
@@ -11,9 +52,16 @@ h1 {
 
 .span-header {
     font-family: 'Candal', 'Montserrat', sans-serif;
+    text-transform: uppercase;
     font-size: 1em;
     margin-right: 0.25em;
 }
+
+
+/* -------------------------------------
+Content styles (Main Module)
+(all the styles inside the < sections > or < aside > tags)
+*/
 
 .input-section {
     text-align: center
@@ -23,7 +71,7 @@ h1 {
     text-align: center;
     font-size: 1em;
     width: 30%;
-    height: 2em;
+    height: 2.5em;
     border: 3px solid black;
 }
 
@@ -32,5 +80,41 @@ button {
     font-size: 1.25em;
     background-color: darkmagenta;
     color: aliceblue;
-    margin: 1em;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #888888;
 }
+
+.results-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+
+.results-section .imageList {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.results-section li {
+    width: 30%;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+.results-section img {
+    height: 10em;
+    width: 80%;
+    border: 4px solid black;
+    border-radius: 10px;
+}
+
+.results-section .caption {
+    font-size: 0.75em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Animation section */
