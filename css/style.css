@@ -1,0 +1,36 @@
+body {
+    background-color: turquoise;
+}
+
+h1 {
+    font-family: 'Montserrat', 'Candal', sans-serif;
+    text-align: center;
+    padding: 1em;
+    font-size: 3em;
+}
+
+.span-header {
+    font-family: 'Candal', 'Montserrat', sans-serif;
+    font-size: 1em;
+    margin-right: 0.25em;
+}
+
+.input-section {
+    text-align: center
+}
+
+.input-box {
+    text-align: center;
+    font-size: 1em;
+    width: 30%;
+    height: 2em;
+    border: 3px solid black;
+}
+
+button {
+    height: 2em;
+    font-size: 1.25em;
+    background-color: darkmagenta;
+    color: aliceblue;
+    margin: 1em;
+}
