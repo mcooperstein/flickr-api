@@ -1,6 +1,8 @@
 var app = angular.module('myApp', ['ngAnimate']);
 
 app.controller('myCtrl', function ($scope, $http, $q, $timeout) {
+
+
     $scope.isSearching = false;
     $scope.resultsFound = false;
     $scope.noResults = false;
@@ -45,8 +47,13 @@ app.controller('myCtrl', function ($scope, $http, $q, $timeout) {
                     $scope.resultsFound = false;
                     $scope.noResults = true;
                 }
-            }).error(function (error) {
+            })
+            .error(function (error) {
                 alert('There was an error with your search');
             });
     };
+
+    $scope.reset = function () {
+        location.reload();
+    }
 });

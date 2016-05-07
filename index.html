@@ -18,7 +18,7 @@
     </header>
     <!-- search bar -->
     <section class="input-section">
-        <form ng-submit="search()">
+        <form name="userInput" ng-submit="search()">
             <!--When a user clicks submit, the text field in the form is cleared and text appears that indicates Flickr is being queried.-->
             <input class="input-box" ng-model="searchTerm" placeholder="Enter a search term" ng-hide="isSearching" required>
             <button type="submit" ng-click="show=true">Search</button>
@@ -31,16 +31,18 @@
         </div>
         <div ng-if="show && resultsFound">
             <h3>We found {{numImages}} photos of <span class="highlight">"{{searchTerm}}"</span>.</h3>
+            <button class="reset" type="submit" ng-click="reset()">Conduct a New Search</button>
         </div>
         <div ng-if="show && noResults">
-            <h3>Sorry, we couldn't find any photos of <span class="highlight">{{searchTerm}}</span>. Try searching for something else.</h3>
+            <h3>Sorry, we couldn't find any photos of "<span class="highlight">{{searchTerm}}</span>." Try searching for something else.</h3>
+            <button class="reset" type="submit" ng-click="reset()">Conduct a New Search</button>
         </div>
-        <ul class="imageList">
+        <ul ng-if="show && resultsFound" class="imageList">
             <li ng-repeat="result in results.photos.photo">
                 <div class="caption">
                     <p>{{result.title}}</p>
                 </div>
-                <img ng-src="https://farm{{result.farm}}.staticflickr.com/{{result.server}}/{{result.id}}_{{result.secret}}.jpg">
+                <img ng-show="resultsFound" ng-src="https://farm{{result.farm}}.staticflickr.com/{{result.server}}/{{result.id}}_{{result.secret}}.jpg">
             </li>
         </ul>
     </section>
